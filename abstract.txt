@@ -1,2 +1,0 @@
-#include <iomanip>
-cout<<sflags(ios::fixed)<<setprecision(2)<<result<<endl;
