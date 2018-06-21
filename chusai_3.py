@@ -5,15 +5,28 @@ m = 0
 path = []
 ques = []
 count = 0
+base = 0
+mod_num = 1000000007
+
+class Node:
+	def __init__(self, index, to, cost):
+		self.index = index
+		self.to = to
+		self.cost = cost
+
+paths = {}
 for line in sys.stdin:
 	a = line.split()
 	if count == 0:
 		n = int(a[0])
 	elif count > 0 and count < n:
-		tmp = []
-		for item in a:
-			tmp.append(int(item))
-		path.append(tmp)
+		if int(a[0]) not in paths.keys():
+			paths[int(a[0])] = []
+		if int(a[1]) not in paths.keys():
+			paths[int(a[1])] = []
+		paths[int(a[0])].append(Node(int(a[1]), int(a[2]), int(a[3])))
+		paths[int(a[1])].append(Node(int(a[0]), int(a[2]), int(a[3])))
+		base = base + (int(a[2])*(int(a[3]) + (int(a[3]) & 1))) % mod_num
 	elif count == n:
 		m = int(a[0])
 	else:
@@ -22,24 +35,6 @@ for line in sys.stdin:
 			tmp.append(int(item))
 		ques.append(tmp)
 	count = count + 1
-print n, path, m, ques
-
-all_path = {}
-for i in range(path):
-	if path[i][0] in all_path.keys():
-		all_path[path[i][0]].append([path[i][1], path[i][2], path[i][3]])
-    else:
-    	all_path[path[i][0]] = []
-		all_path[path[i][0]].append([path[i][1], path[i][2], path[i][3]])
-
-	if path[i][1] in all_path.keys():
-		all_path[path[i][1]].append([path[i][0], path[i][2], path[i][3]])
-    else:
-    	all_path[path[i][1]] = []
-		all_path[path[i][1]].append([path[i][0], path[i][2], path[i][3]])
-
-
-
-
-for i in range(ques):
+print base
+print paths
 
