@@ -50,3 +50,6 @@ def bfs(paths, start, target):
                 else:
                     stack.append((next_node, path + [next_node]))
 
+
+
+MST http://www.guofei.site/2017/09/12/minimumspanningtree.html
