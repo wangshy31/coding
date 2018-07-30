@@ -54,3 +54,7 @@ def bfs(paths, start, target):
 Bellman-Fold: negative_edges
 
 MST http://www.guofei.site/2017/09/12/minimumspanningtree.html
+
+collections.Counter()
+import bisect
+bisect, bisect(data, 1)
